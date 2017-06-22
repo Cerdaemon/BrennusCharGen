@@ -1,0 +1,31 @@
+﻿<Window x:Class="BrennusRPGCharGen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BrennusRPGCharGen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1000">
+    <Grid x:Name="root" Margin="0,0,2,-3">
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="752" Margin="437,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="543"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="752" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="422"/>
+        <Label x:Name="label_Character" Content="Character" HorizontalAlignment="Left" Height="33" Margin="36,28,0,0" VerticalAlignment="Top" Width="198"/>
+        <Border BorderBrush="#FF666666" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="36,66,0,0" VerticalAlignment="Top" Width="386">
+            <ScrollViewer x:Name="Scrollview_Link" HorizontalAlignment="Left" Height="280" Margin="0,0,2,0" VerticalAlignment="Top" Width="384" BorderThickness="0" Foreground="{x:Null}" BorderBrush="Black">
+                <Grid x:Name="grid_Link" HorizontalAlignment="Left" Height="223" Margin="0" VerticalAlignment="Top" Width="370" Background="#FFE4E4E4">
+                    <Label x:Name="label_Link" Content="Links:" HorizontalAlignment="Left" Margin="10,10,0,0" Width="72" Height="30" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox_Link_Amount" Height="20" Margin="87,14,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49" HorizontalAlignment="Left"/>
+                    <Label x:Name="label_Link_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="141,10,0,0" VerticalAlignment="Top" Width="53"/>
+                    <TextBox x:Name="textBox_Link_Rolled_Amount" HorizontalAlignment="Left" Height="20" Margin="194,14,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
+                    <Button x:Name="button_Link_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="248,14,0,0" VerticalAlignment="Top" Width="58" Click="Link_Roll_Click"/>
+                </Grid>
+
+            </ScrollViewer>
+        </Border>
+        <Label x:Name="label_Manifestation" Content="Manifestation:" HorizontalAlignment="Left" Margin="40,357,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Manifestation_Type" Height="20" Margin="130,361,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="91" HorizontalAlignment="Left"/>
+        <Label x:Name="label_Manifestation_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="226,357,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="textBox_Manifestation_Rolled_Amount" HorizontalAlignment="Left" Height="20" Margin="279,361,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="button_Manifestation_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="341,361,0,0" VerticalAlignment="Top" Width="58" Click="Manifestation_Roll_Click"/>
+    </Grid>
+</Window>
