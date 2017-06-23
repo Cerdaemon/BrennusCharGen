@@ -12,3 +12,17 @@ C:\Users\Alexander\Documents\GitHub\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGe
 C:\Users\Alexander\Documents\GitHub\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.csproj.GenerateResource.Cache
 C:\Users\Alexander\Documents\GitHub\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.exe
 C:\Users\Alexander\Documents\GitHub\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.pdb
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\bin\Debug\BrennusRPGCharGen.exe.config
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.exe
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.pdb
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\bin\Debug\BrennusRPGCharGen.exe
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\bin\Debug\BrennusRPGCharGen.pdb
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.csprojResolveAssemblyReference.cache
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\MainWindow.g.cs
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\App.g.cs
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen_MarkupCompile.cache
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen_MarkupCompile.lref
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\MainWindow.baml
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.g.resources
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.Properties.Resources.resources
+C:\Users\Alexander\Documents\GitHub\BrennusCharGen\BrennusCharGen\BrennusRPGCharGen\obj\Debug\BrennusRPGCharGen.csproj.GenerateResource.Cache

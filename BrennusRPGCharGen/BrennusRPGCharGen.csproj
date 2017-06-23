@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
     <Compile Include="Manifestation.cs" />
+    <Compile Include="Power.cs" />
     <Compile Include="Star.cs" />
     <Compile Include="Tier.cs" />
     <Page Include="MainWindow.xaml">

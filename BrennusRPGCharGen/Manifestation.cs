@@ -23,35 +23,35 @@ namespace BrennusRPGCharGen
 
         int numDreams;
         int numNightmares;
-        double DVModifier;
+        double dvModifier;
 
         int adonisChance;
         int shadowChance;
 
         int tierModifier;
 
-        Manifestation() { }
+        public Manifestation() { }
 
         Manifestation(ManifestationType t, int numD, int numN, double dv, int aC, int sC)
         {
             Type = t;
-            numDreams = numD;
-            numNightmares = numN;
-            DVModifier = dv;
-            adonisChance = aC;
-            shadowChance = sC;
-            tierModifier = 0;
+            NumDreams = numD;
+            NumNightmares = numN;
+            DvModifier = dv;
+            AdonisChance = aC;
+            ShadowChance = sC;
+            TierModifier = 0;
         }
 
         Manifestation(ManifestationType t, int numD, int numN, double dv, int aC, int sC, int tm)
         {
             Type = t;
-            numDreams = numD;
-            numNightmares = numN;
-            DVModifier = dv;
-            adonisChance = aC;
-            shadowChance = sC;
-            tierModifier = tm;
+            NumDreams = numD;
+            NumNightmares = numN;
+            DvModifier = dv;
+            AdonisChance = aC;
+            ShadowChance = sC;
+            TierModifier = tm;
         }
 
         public static readonly Manifestation Normal = new Manifestation(ManifestationType.Normal, 0, 0, 0, 0, 0);
@@ -71,6 +71,84 @@ namespace BrennusRPGCharGen
             set
             {
                 type = value;
+            }
+        }
+
+        public int NumDreams
+        {
+            get
+            {
+                return numDreams;
+            }
+
+            set
+            {
+                numDreams = value;
+            }
+        }
+
+        public int NumNightmares
+        {
+            get
+            {
+                return numNightmares;
+            }
+
+            set
+            {
+                numNightmares = value;
+            }
+        }
+
+        public double DvModifier
+        {
+            get
+            {
+                return dvModifier;
+            }
+
+            set
+            {
+                dvModifier = value;
+            }
+        }
+
+        public int AdonisChance
+        {
+            get
+            {
+                return adonisChance;
+            }
+
+            set
+            {
+                adonisChance = value;
+            }
+        }
+
+        public int ShadowChance
+        {
+            get
+            {
+                return shadowChance;
+            }
+
+            set
+            {
+                shadowChance = value;
+            }
+        }
+
+        public int TierModifier
+        {
+            get
+            {
+                return tierModifier;
+            }
+
+            set
+            {
+                tierModifier = value;
             }
         }
     }

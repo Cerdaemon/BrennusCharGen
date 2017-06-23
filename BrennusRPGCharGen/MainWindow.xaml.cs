@@ -21,12 +21,22 @@ namespace BrennusRPGCharGen
     public partial class MainWindow : Window
     {
 
+        Random rnd = new Random();
+
         List<TextBox> linkTierRoll = new List<TextBox>();
         List<Label> linkTierTypes = new List<Label>();
 
         List<TextBox> linkStarRoll = new List<TextBox>();
         List<Label> linkStarTypes = new List<Label>();
 
+
+        List<TextBox> powerTierRoll = new List<TextBox>();
+        List<Label> powerTierTypes = new List<Label>();
+
+        List<TextBox> powerStarRoll = new List<TextBox>();
+        List<Label> powerStarTypes = new List<Label>();
+
+        Character character = new Character();
 
         public MainWindow()
         {
@@ -68,6 +78,8 @@ namespace BrennusRPGCharGen
                 rollLinkAmount = RollRandom(1, 12);
                 textBox_Link_Amount.Text = "" + rollLinkAmount;
             }
+
+            character.passAmountOfLinks(rollLinkAmount);
 
             for (int i = 1; i <= rollLinkAmount; i++)
             {
@@ -171,13 +183,173 @@ namespace BrennusRPGCharGen
         {
             int rollD100 = RollRandom(1, 100);
             textBox_Manifestation_Rolled_Amount.Text = "" + rollD100;
-            textBox_Manifestation_Type.Text = "" + getManifestation(rollD100).Type;
-            
+
+            Manifestation manifestation = getManifestation(rollD100);
+
+            textBox_Manifestation_Type.Text = "" + manifestation.Type;
+
+            character.passManifestation(manifestation);
+            fillCharacterStats();
         }
 
-        private int RollRandom(int low, int high) {
+        private void Physique_Roll_Click(object sender, RoutedEventArgs e)
+        {
+            // Using same Tier list as for other powers, in the rules the only difference is a 5% higher chance for exemplar and thus 5% less for paragon
+            int rollD100 = RollRandom(1, 100);
+            textBox_Physique_Roll.Text = "" + rollD100;
+            textBox_Physique.Text = "" + getTier(rollD100).Type;
 
-            Random rnd = new Random();
+        }
+
+        private void Power_Amount_Roll_Click(object sender, RoutedEventArgs e)
+        {
+            grid_Power.Height = 0;
+            grid_Power.Children.Clear();
+
+            powerTierRoll.Clear();
+            powerTierTypes.Clear();
+            powerStarRoll.Clear();
+            powerStarTypes.Clear();
+
+            int rollD100 = RollRandom(1, 100);
+            int amount = 0;
+            textBox_Power_Amount_Roll.Text = "" + rollD100;
+
+            if(rollD100 <= 75)
+            {
+                textBox_Power_Single_Multi.Text = "Single Power";
+                amount = 1;
+            }
+            else
+            {
+                int powerCountRoll = RollRandom(1, 100);
+                if(powerCountRoll <= 20)
+                {
+                    amount = 2;  
+                }
+                else if(20 < powerCountRoll && powerCountRoll <= 40)
+                {
+                    amount = 3;
+                }
+                else if (40 < powerCountRoll && powerCountRoll <= 60)
+                {
+                    amount = 4;
+                }
+                else if (60 < powerCountRoll && powerCountRoll <= 80)
+                {
+                    amount = 5;
+                }
+                else if (80 < powerCountRoll && powerCountRoll <= 99)
+                {
+                    amount = 6;
+                }
+                else if (powerCountRoll == 100)
+                {
+                    amount = 7;
+                }
+
+                textBox_Power_Single_Multi.Text = amount + " Powers";
+            }
+
+            character.passAmountOfPowers(amount);
+
+            for (int i = 1; i <= amount; i++)
+            {
+                grid_Power.Height += 60;
+                //Link Tier
+
+                Label powerTier = new Label();
+                powerTier.Content = "Power " + i + ": Tier: ";
+                powerTier.HorizontalAlignment = HorizontalAlignment.Left;
+                powerTier.VerticalAlignment = VerticalAlignment.Top;
+                powerTier.Width = 80;
+                powerTier.Height = 30;
+                powerTier.Margin = new Thickness(20.0, grid_Power.Height - 60.0, 0, 0);
+                grid_Power.Children.Add(powerTier);
+
+
+                TextBox powerTierValue = new TextBox();
+                powerTierValue.Name = "PowerTierText" + i;
+                powerTierValue.HorizontalAlignment = HorizontalAlignment.Left;
+                powerTierValue.VerticalAlignment = VerticalAlignment.Top;
+                powerTierValue.Width = 30;
+                powerTierValue.Height = 20;
+                powerTierValue.Margin = new Thickness(110.0, grid_Power.Height - 55.0, 0, 0);
+                grid_Power.Children.Add(powerTierValue);
+                powerTierRoll.Add(powerTierValue);
+
+
+                Label powerRolledTier = new Label();
+                powerRolledTier.Content = "";
+                powerRolledTier.HorizontalAlignment = HorizontalAlignment.Left;
+                powerRolledTier.VerticalAlignment = VerticalAlignment.Top;
+                powerRolledTier.Width = 80;
+                powerRolledTier.Height = 30;
+                powerRolledTier.Margin = new Thickness(190.0, grid_Power.Height - 60.0, 0, 0);
+                grid_Power.Children.Add(powerRolledTier);
+                powerTierTypes.Add(powerRolledTier);
+
+
+                Button roll_Power_Tier = new Button();
+                roll_Power_Tier.Name = "rlt" + i;
+                roll_Power_Tier.Click += new RoutedEventHandler(roll_Power_Tier_Click);
+                roll_Power_Tier.Content = "Roll";
+                roll_Power_Tier.HorizontalAlignment = HorizontalAlignment.Left;
+                roll_Power_Tier.VerticalAlignment = VerticalAlignment.Top;
+                roll_Power_Tier.Width = 40;
+                roll_Power_Tier.Height = 20;
+                roll_Power_Tier.Margin = new Thickness(280.0, grid_Power.Height - 55.0, 0, 0);
+                grid_Power.Children.Add(roll_Power_Tier);
+
+
+                //Link Star
+                Label powerStar = new Label();
+                powerStar.Content = "               Star: ";
+                powerStar.HorizontalAlignment = HorizontalAlignment.Left;
+                powerStar.VerticalAlignment = VerticalAlignment.Top;
+                powerStar.Width = 82;
+                powerStar.Height = 30;
+                powerStar.Margin = new Thickness(20.0, grid_Power.Height - 30.0, 0, 0);
+                grid_Power.Children.Add(powerStar);
+
+
+                TextBox powerStarValue = new TextBox();
+                powerStarValue.Name = "LinkTierText" + i;
+                powerStarValue.HorizontalAlignment = HorizontalAlignment.Left;
+                powerStarValue.VerticalAlignment = VerticalAlignment.Top;
+                powerStarValue.Width = 70;
+                powerStarValue.Height = 20;
+                powerStarValue.Margin = new Thickness(110.0, grid_Power.Height - 25.0, 0, 0);
+                grid_Power.Children.Add(powerStarValue);
+                powerStarRoll.Add(powerStarValue);
+
+
+                Label powerRolledStar = new Label();
+                powerRolledStar.Content = "";
+                powerRolledStar.HorizontalAlignment = HorizontalAlignment.Left;
+                powerRolledStar.VerticalAlignment = VerticalAlignment.Top;
+                powerRolledStar.Width = 80;
+                powerRolledStar.Height = 30;
+                powerRolledStar.Margin = new Thickness(190.0, grid_Power.Height - 30.0, 0, 0);
+                grid_Power.Children.Add(powerRolledStar);
+                powerStarTypes.Add(powerRolledStar);
+
+
+                Button roll_Power_Star = new Button();
+                roll_Power_Star.Name = "rls" + i;
+                roll_Power_Star.Click += new RoutedEventHandler(roll_Power_Tier_Click);
+                roll_Power_Star.Content = "Roll";
+                roll_Power_Star.HorizontalAlignment = HorizontalAlignment.Left;
+                roll_Power_Star.VerticalAlignment = VerticalAlignment.Top;
+                roll_Power_Star.Width = 40;
+                roll_Power_Star.Height = 20;
+                roll_Power_Star.Margin = new Thickness(280.0, grid_Power.Height - 25.0, 0, 0);
+                grid_Power.Children.Add(roll_Power_Star);
+            }
+
+        }
+
+        private int RollRandom(int low, int high) {          
 
             return rnd.Next(low, high + 1);
         }
@@ -209,11 +381,99 @@ namespace BrennusRPGCharGen
             {
                 int roll = RollRandom(1, 100);
                 linkStarRoll[index - 1].Text = "" + roll;
-                linkStarTypes[index - 1].Content = "" + getStar(roll).Type;
+                Star star = getStar(roll, -1);
+                linkStarTypes[index - 1].Content = "" + star.Type;
+
+                if(star.Type == StarType.Black_Hole)
+                {
+                    character.passLinkDV(50, index);
+                }
+                else if (star.Type == StarType.D2)
+                {
+                    character.passLinkDV(30, index);
+                }
+                else if (star.Type == StarType.D1)
+                {
+                    character.passLinkDV(15, index);
+                }
+                else if (star.Type == StarType.Failed_Star)
+                {
+                    character.passLinkDV(10, index);
+                }
+                else if (star.Type == StarType.White_Hole)
+                {
+                    character.passLinkDV(-100, index);
+                }
+                else
+                {
+                    character.passLinkDV(-5, index);
+                }
+
             }
 
         }
 
+        protected void roll_Power_Tier_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            int index = 0;
+
+            if (button.Name.Length == 5)
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 2] + "" + button.Name[button.Name.Length - 1], out index);
+            }
+            else
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 1], out index);
+            }
+
+            Tier tier = new Tier();
+            Star star = new Star();
+            int tiermod = 0;
+
+            if (button.Name.Contains("rlt"))
+            {
+                int roll = RollRandom(1, 100);
+                powerTierRoll[index - 1].Text = "" + roll;
+                tier = getTier(roll);
+                character.passTier(tier, index);
+                int newlvl = tier.PreciseLevel + (tiermod * 3);
+                powerTierTypes[index - 1].Content = "" + Tier.returnTierByLevel(newlvl).Type + "(" + newlvl + ")";
+            }
+
+            if (button.Name.Contains("rls"))
+            {
+                int roll = RollRandom(1, 100);
+                powerStarRoll[index - 1].Text = "" + roll;
+                star = getStar(roll, index - 1);
+                tiermod = star.TierModifier;
+
+                tier = character.Powers[index - 1].Tier;
+                if (tier.Type != TierType.Normie)
+                {
+                    if(tier.PreciseLevel + (tiermod * 3) > 0 && tier.PreciseLevel + (tiermod * 3) < 13)
+                    {
+                        int newlvl = tier.PreciseLevel + (tiermod * 3);                        
+                        powerTierTypes[index - 1].Content = "" + Tier.returnTierByLevel(newlvl).Type + "(" + newlvl + ")";
+                    }
+                    else if(tier.PreciseLevel + (tiermod * 3) < 1)
+                    {
+                        powerTierTypes[index - 1].Content = "" + Tier.returnTierByLevel(1).Type + "(" + 1 + ")";
+                    }
+                    else if(tier.PreciseLevel + (tiermod * 3) > 12)
+                    {
+                        powerTierTypes[index - 1].Content = "" + Tier.returnTierByLevel(12).Type + "(" + 12 + ")";
+                    }
+                    
+                }
+                character.passStar(star, index);
+                powerStarTypes[index - 1].Content = "" + star.Type;
+            }
+            
+            fillCharacterStats();
+
+        }
 
         private Tier getTier(int roll){
 
@@ -288,11 +548,18 @@ namespace BrennusRPGCharGen
             return Tier.Normie;
         }
 
-        private Star getStar(int roll)
+        // Maybe fix the index issue so that it works for links also
+
+        private Star getStar(int roll, int ind)
         {
             if (roll <= 10)
             {
-                return Star.Dead_Star;
+                int rollDead = RollRandom(1, 100);
+                if(ind >= 0)
+                {
+                    powerStarRoll[ind].Text += " > " + rollDead;
+                }                
+                return getDeadStar(rollDead, ind);
             }
             else if (10 < roll && roll <= 20)
             {
@@ -324,11 +591,83 @@ namespace BrennusRPGCharGen
             }
             else if (95 < roll && roll <= 100)
             {
-                return Star.Living_Star;
+                int rollLiving = RollRandom(1, 100);
+                if (ind >= 0)
+                {
+                    powerStarRoll[ind].Text += " > " + rollLiving;
+                }
+                return getLivingStar(rollLiving, ind);
             }
 
-
             return Star.No_Star;
+        }
+
+        private Star getDeadStar(int roll, int ind)
+        {
+            if (roll <= 10)
+            {
+                return Star.Black_Hole;
+            }
+            else if (10 < roll && roll <= 33)
+            {
+                return Star.D1_Star;
+            }
+            else if (33 < roll && roll <= 50)
+            {
+                return Star.D2_Star;
+            }
+            else if (50 < roll && roll <= 85)
+            {
+                return Star.Failed_Star;
+            }
+            else if (85 < roll && roll <= 100)
+            {
+                int rollAgain = RollRandom(1, 100);
+                if (ind >= 0)
+                {
+                    powerStarRoll[ind].Text += " > " + rollAgain;
+                }
+                return getStar(rollAgain, ind);
+            }
+            return Star.Dead_Star;
+        }
+
+        private Star getLivingStar(int roll, int ind)
+        {
+            if (roll <= 10)
+            {
+                int rollAgain = RollRandom(1, 100);
+                if (ind >= 0)
+                {
+                    powerStarRoll[ind].Text += " > " + rollAgain;
+                }
+                return getStar(rollAgain, ind);
+            }
+            else if (10 < roll && roll <= 25)
+            {
+                return Star.Supernova;
+            }
+            else if (25 < roll && roll <= 51)
+            {
+                return Star.Exotic_Star;
+            }
+            else if (51 < roll && roll <= 79)
+            {
+                return Star.Binary_Star;
+            }
+            else if (79 < roll && roll <= 89)
+            {
+                return Star.Star_Forge;
+            }
+            else if (89 < roll && roll <= 99)
+            {
+                return Star.Quasar;
+            }
+            else if (99 < roll && roll <= 100)
+            {
+                return Star.White_Hole;
+            }
+            return Star.Living_Star;
         }
 
         private Manifestation getManifestation(int roll)
@@ -359,6 +698,13 @@ namespace BrennusRPGCharGen
             }
 
             return Manifestation.Normal;
+        }
+
+        private void fillCharacterStats()
+        {
+            textBox_Dreams.Text = "" + character.TotalDreams;
+            textBox_Nightmares.Text = "" + character.TotalNightmares;
+            textBox_Derangements.Text = "" + character.TotalDerangement;
         }
     }
 }

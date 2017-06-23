@@ -9,8 +9,8 @@
     <Grid x:Name="root" Margin="0,0,2,-3">
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="752" Margin="437,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="543"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="752" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="422"/>
-        <Label x:Name="label_Character" Content="Character" HorizontalAlignment="Left" Height="33" Margin="36,28,0,0" VerticalAlignment="Top" Width="198"/>
-        <Border BorderBrush="#FF666666" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="36,66,0,0" VerticalAlignment="Top" Width="386">
+        <Label x:Name="label_Character" Content="Character Power and Strength" HorizontalAlignment="Left" Height="33" Margin="36,23,0,0" VerticalAlignment="Top" Width="198"/>
+        <Border BorderBrush="#FF666666" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="36,60,0,0" VerticalAlignment="Top" Width="386">
             <ScrollViewer x:Name="Scrollview_Link" HorizontalAlignment="Left" Height="280" Margin="0,0,2,0" VerticalAlignment="Top" Width="384" BorderThickness="0" Foreground="{x:Null}" BorderBrush="Black">
                 <Grid x:Name="grid_Link" HorizontalAlignment="Left" Height="223" Margin="0" VerticalAlignment="Top" Width="370" Background="#FFE4E4E4">
                     <Label x:Name="label_Link" Content="Links:" HorizontalAlignment="Left" Margin="10,10,0,0" Width="72" Height="30" VerticalAlignment="Top"/>
@@ -22,10 +22,37 @@
 
             </ScrollViewer>
         </Border>
-        <Label x:Name="label_Manifestation" Content="Manifestation:" HorizontalAlignment="Left" Margin="40,357,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Manifestation_Type" Height="20" Margin="130,361,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="91" HorizontalAlignment="Left"/>
-        <Label x:Name="label_Manifestation_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="226,357,0,0" VerticalAlignment="Top" Width="53"/>
-        <TextBox x:Name="textBox_Manifestation_Rolled_Amount" HorizontalAlignment="Left" Height="20" Margin="279,361,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
-        <Button x:Name="button_Manifestation_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="341,361,0,0" VerticalAlignment="Top" Width="58" Click="Manifestation_Roll_Click"/>
+        <Label x:Name="label_Manifestation" Content="Manifestation:" HorizontalAlignment="Left" Margin="40,346,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Manifestation_Type" Height="20" Margin="130,350,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="91" HorizontalAlignment="Left"/>
+        <Label x:Name="label_Manifestation_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="226,346,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="textBox_Manifestation_Rolled_Amount" HorizontalAlignment="Left" Height="20" Margin="279,350,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="button_Manifestation_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="341,350,0,0" VerticalAlignment="Top" Width="58" Click="Manifestation_Roll_Click"/>
+        <Label x:Name="label_Power_Amount" Content="Amount:" HorizontalAlignment="Left" Margin="40,422,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Power_Single_Multi" Height="20" Margin="130,426,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="91" HorizontalAlignment="Left"/>
+        <Label x:Name="label_Power_Amount_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="226,422,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="textBox_Power_Amount_Roll" HorizontalAlignment="Left" Height="20" Margin="279,426,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="button_Power_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="341,426,0,0" VerticalAlignment="Top" Width="58" Click="Power_Amount_Roll_Click"/>
+        <Label x:Name="label_Power" Content="Power:" HorizontalAlignment="Left" Margin="40,371,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
+
+        <Border BorderBrush="#FF666666" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="36,457,0,0" VerticalAlignment="Top" Width="386">
+            <ScrollViewer x:Name="Scrollview_Power" HorizontalAlignment="Left" Height="280" Margin="0,0,2,0" VerticalAlignment="Top" Width="384" BorderThickness="0" Foreground="{x:Null}" BorderBrush="Black">
+                <Grid x:Name="grid_Power" HorizontalAlignment="Left" Height="223" Margin="0" VerticalAlignment="Top" Width="370" Background="#FFE4E4E4">
+                </Grid>
+            </ScrollViewer>
+        </Border>
+        <Label x:Name="label_Physique" Content="Physique:" HorizontalAlignment="Left" Margin="40,397,0,0" Width="85" Height="30" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Physique" Height="20" Margin="130,401,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="91" HorizontalAlignment="Left"/>
+        <Label x:Name="label_Physique_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="226,397,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="textBox_Physique_Roll" HorizontalAlignment="Left" Height="20" Margin="279,401,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="button_Physique_Roll" Content="Roll" HorizontalAlignment="Left" Height="20" Margin="341,401,0,0" VerticalAlignment="Top" Width="58" Click="Physique_Roll_Click"/>
+        <Label x:Name="label_Name" Content="Name:" HorizontalAlignment="Left" Margin="454,23,0,0" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="519,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+        <Label x:Name="label_Dreams" Content="Dreams:" HorizontalAlignment="Left" Margin="454,60,0,0" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="textBox_Dreams" HorizontalAlignment="Left" Height="23" Margin="519,64,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="25"/>
+        <Label x:Name="label_Nightmares" Content="Nightmares:" HorizontalAlignment="Left" Margin="549,60,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="textBox_Nightmares" HorizontalAlignment="Left" Height="23" Margin="634,64,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="25"/>
+        <Label x:Name="label_Derangement" Content="Derangement:" HorizontalAlignment="Left" Margin="664,60,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="textBox_Derangements" HorizontalAlignment="Left" Height="23" Margin="754,64,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="40"/>
+
     </Grid>
 </Window>
