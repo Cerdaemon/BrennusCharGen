@@ -36,6 +36,14 @@ namespace BrennusRPGCharGen
         List<TextBox> powerStarRoll = new List<TextBox>();
         List<Label> powerStarTypes = new List<Label>();
 
+        List<TextBox> dreamRolled = new List<TextBox>();
+        List<Label> dreamName = new List<Label>();
+        List<TextBox> dreamCount = new List<TextBox>();
+
+        List<TextBox> nightmareRolled = new List<TextBox>();
+        List<Label> nightmareName = new List<Label>();
+        List<TextBox> nightmareCount = new List<TextBox>();
+
         Character character = new Character();
 
         public MainWindow()
@@ -349,6 +357,162 @@ namespace BrennusRPGCharGen
 
         }
 
+        private void Roll_Dreams_Nightmares(object sender, RoutedEventArgs e)
+        {
+            Grid_Dreams.Height = 0;
+            Grid_Dreams.Children.Clear();
+            Grid_Nightmares.Height = 0;
+            Grid_Nightmares.Children.Clear();
+            dreamRolled.Clear();
+            dreamName.Clear();
+            dreamCount.Clear();
+            nightmareRolled.Clear();
+            nightmareName.Clear();
+            nightmareCount.Clear();
+
+
+            character.Dreams.Clear();
+            character.Nightmares.Clear();
+
+            int amount = 0;
+
+            amount = character.TotalDreams;
+            for (int i = 1; i <= amount; i++)
+            {
+                Grid_Dreams.Height += 30;
+                //Link Tier
+
+                Label name = new Label();
+                name.Content = "Dream: ";
+                name.HorizontalAlignment = HorizontalAlignment.Left;
+                name.VerticalAlignment = VerticalAlignment.Top;
+                name.Width = 80;
+                name.Height = 30;
+                name.Margin = new Thickness(10.0, Grid_Dreams.Height - 30.0, 0, 0);
+                Grid_Dreams.Children.Add(name);
+
+
+                TextBox dreamRoll = new TextBox();
+                dreamRoll.Name = "DreamText" + i;
+                dreamRoll.HorizontalAlignment = HorizontalAlignment.Left;
+                dreamRoll.VerticalAlignment = VerticalAlignment.Top;
+                dreamRoll.Width = 30;
+                dreamRoll.Height = 20;
+                dreamRoll.Margin = new Thickness(100.0, Grid_Dreams.Height - 25.0, 0, 0);
+                Grid_Dreams.Children.Add(dreamRoll);
+                dreamRolled.Add(dreamRoll);
+
+                Label nameBox = new Label();
+                nameBox.Content = "";
+                nameBox.HorizontalAlignment = HorizontalAlignment.Left;
+                nameBox.VerticalAlignment = VerticalAlignment.Top;
+                nameBox.Width = 80;
+                nameBox.Height = 30;
+                nameBox.Margin = new Thickness(130.0, Grid_Dreams.Height - 30.0, 0, 0);
+                Grid_Dreams.Children.Add(nameBox);
+                dreamName.Add(nameBox);
+
+                Label x_label = new Label();
+                x_label.Content = "x";
+                x_label.HorizontalAlignment = HorizontalAlignment.Left;
+                x_label.VerticalAlignment = VerticalAlignment.Top;
+                x_label.Width = 15;
+                x_label.Height = 30;
+                x_label.Margin = new Thickness(240, Grid_Dreams.Height - 30.0, 0, 0);
+                Grid_Dreams.Children.Add(x_label);
+
+                TextBox times = new TextBox();
+                times.Name = "DreamText" + i;
+                times.HorizontalAlignment = HorizontalAlignment.Left;
+                times.VerticalAlignment = VerticalAlignment.Top;
+                times.Width = 20;
+                times.Height = 20;
+                times.Margin = new Thickness(255, Grid_Dreams.Height - 25.0, 0, 0);
+                Grid_Dreams.Children.Add(times);
+                dreamCount.Add(times);
+
+                Button dream_roll_Button = new Button();
+                dream_roll_Button.Name = "drb" + i;
+                dream_roll_Button.Click += new RoutedEventHandler(roll_Dream_Click);
+                dream_roll_Button.Content = "Roll";
+                dream_roll_Button.HorizontalAlignment = HorizontalAlignment.Left;
+                dream_roll_Button.VerticalAlignment = VerticalAlignment.Top;
+                dream_roll_Button.Width = 40;
+                dream_roll_Button.Height = 20;
+                dream_roll_Button.Margin = new Thickness(285, Grid_Dreams.Height - 25.0, 0, 0);
+                Grid_Dreams.Children.Add(dream_roll_Button);
+            }
+
+            amount = character.TotalNightmares;
+            for (int i = 1; i <= amount; i++)
+            {
+                Grid_Nightmares.Height += 30;
+                //Link Tier
+
+                Label name = new Label();
+                name.Content = "Nightmare: ";
+                name.HorizontalAlignment = HorizontalAlignment.Left;
+                name.VerticalAlignment = VerticalAlignment.Top;
+                name.Width = 80;
+                name.Height = 30;
+                name.Margin = new Thickness(10.0, Grid_Nightmares.Height - 30.0, 0, 0);
+                Grid_Nightmares.Children.Add(name);
+
+
+                TextBox nightmareRoll = new TextBox();
+                nightmareRoll.Name = "NightmareText" + i;
+                nightmareRoll.HorizontalAlignment = HorizontalAlignment.Left;
+                nightmareRoll.VerticalAlignment = VerticalAlignment.Top;
+                nightmareRoll.Width = 30;
+                nightmareRoll.Height = 20;
+                nightmareRoll.Margin = new Thickness(100.0, Grid_Nightmares.Height - 25.0, 0, 0);
+                Grid_Nightmares.Children.Add(nightmareRoll);
+                nightmareRolled.Add(nightmareRoll);
+
+                Label nameBox = new Label();
+                nameBox.Content = "";
+                nameBox.HorizontalAlignment = HorizontalAlignment.Left;
+                nameBox.VerticalAlignment = VerticalAlignment.Top;
+                nameBox.Width = 80;
+                nameBox.Height = 30;
+                nameBox.Margin = new Thickness(130.0, Grid_Nightmares.Height - 30.0, 0, 0);
+                Grid_Nightmares.Children.Add(nameBox);
+                nightmareName.Add(nameBox);
+
+                Label x_label = new Label();
+                x_label.Content = "x";
+                x_label.HorizontalAlignment = HorizontalAlignment.Left;
+                x_label.VerticalAlignment = VerticalAlignment.Top;
+                x_label.Width = 15;
+                x_label.Height = 30;
+                x_label.Margin = new Thickness(240, Grid_Nightmares.Height - 30.0, 0, 0);
+                Grid_Nightmares.Children.Add(x_label);
+
+                TextBox times = new TextBox();
+                times.Name = "DreamText" + i;
+                times.HorizontalAlignment = HorizontalAlignment.Left;
+                times.VerticalAlignment = VerticalAlignment.Top;
+                times.Width = 20;
+                times.Height = 20;
+                times.Margin = new Thickness(255, Grid_Nightmares.Height - 25.0, 0, 0);
+                Grid_Nightmares.Children.Add(times);
+                nightmareCount.Add(times);
+
+                Button dream_roll_Button = new Button();
+                dream_roll_Button.Name = "nrb" + i;
+                dream_roll_Button.Click += new RoutedEventHandler(roll_Nightmare_Click);
+                dream_roll_Button.Content = "Roll";
+                dream_roll_Button.HorizontalAlignment = HorizontalAlignment.Left;
+                dream_roll_Button.VerticalAlignment = VerticalAlignment.Top;
+                dream_roll_Button.Width = 40;
+                dream_roll_Button.Height = 20;
+                dream_roll_Button.Margin = new Thickness(285, Grid_Nightmares.Height - 25.0, 0, 0);
+                Grid_Nightmares.Children.Add(dream_roll_Button);
+            }
+
+            character.passAmountODreamsAndNightmares();
+        }
+
         private int RollRandom(int low, int high) {          
 
             return rnd.Next(low, high + 1);
@@ -473,6 +637,87 @@ namespace BrennusRPGCharGen
             
             fillCharacterStats();
 
+        }
+
+        protected void roll_Dream_Click(object sender, EventArgs e)
+        {
+
+            Button button = sender as Button;
+
+            int index = 0;
+
+            if (button.Name.Length == 5)
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 2] + "" + button.Name[button.Name.Length - 1], out index);
+            }
+            else
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 1], out index);
+            }
+
+
+
+            int roll = RollRandom(1, 41);
+            dreamRolled[index - 1].Text = "" + roll;
+            Dream dream = getDream(roll, index);
+            dreamName[index - 1].Content = "" + dream.Name;
+
+            //if (character.Dreams.Contains(dream))
+            //{
+            //    //int i = character.Dreams.IndexOf(dream);
+            //    int dc;
+            //    Int32.TryParse(dreamCount[index - 1].Text, out dc);
+            //    dreamCount[index - 1].Text = "" + (dc + 1);
+            //    //character.Dreams.Remove(dream);
+            //    //Grid_Dreams.Children.RemoveRange((i) * 6,6);
+            //}
+            //else
+            //{
+                dreamCount[index - 1].Text = "1";
+            //}
+
+            character.passDream(dream, index);
+            fillCharacterStats();
+        }
+
+        protected void roll_Nightmare_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            int index = 0;
+
+            if (button.Name.Length == 5)
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 2] + "" + button.Name[button.Name.Length - 1], out index);
+            }
+            else
+            {
+                Int32.TryParse("" + button.Name[button.Name.Length - 1], out index);
+            }
+
+
+
+            int roll = RollRandom(1, 41);
+            nightmareRolled[index - 1].Text = "" + roll;
+            Nightmare nightmare = getNightmare(roll, index);
+            nightmareName[index - 1].Content = "" + nightmare.Name;
+
+            //if (character.Nightmares.Contains(nightmare))
+            //{
+            //    //int i = character.Nightmares.IndexOf(nightmare);
+            //    int dc;
+            //    Int32.TryParse(dreamCount[index - 1].Text, out dc);
+            //    dreamCount[index - 1].Text = "" + (dc + 1);
+            //    //character.Nightmares.Remove(nightmare);
+            //    //Grid_Nightmaress.Children.RemoveRange((i) * 6,6);
+            //}
+            //else
+            //{
+                nightmareCount[index - 1].Text = "1";
+            //}
+
+            character.passNightmare(nightmare, index);
+            fillCharacterStats();
         }
 
         private Tier getTier(int roll){
@@ -700,11 +945,216 @@ namespace BrennusRPGCharGen
             return Manifestation.Normal;
         }
 
+        private Dream getDream(int roll, int ind)
+        {
+            Dream dream = new Dream();
+            if (roll <= 2)
+            {
+                dream = Dream.Wetness;
+            }
+            else if (roll > 2 && roll <= 4)
+            {
+                dream = Dream.Fragments;
+            }
+            else if (roll > 4 && roll <= 6)
+            {
+                dream = Dream.Power;
+            }
+            else if (roll > 6 && roll <= 8)
+            {
+                dream = Dream.Peace;
+            }
+            else if (roll > 8 && roll <= 10)
+            {
+                dream = Dream.Friends;
+            }
+            else if (roll > 10 && roll <= 12)
+            {
+                dream = Dream.Freedom;
+            }
+            else if (roll > 12 && roll <= 14)
+            {
+                dream = Dream.Forests;
+            }
+            else if (roll > 14 && roll <= 16)
+            {
+                dream = Dream.Life;
+            }
+            else if (roll > 16 && roll <= 18)
+            {
+                dream = Dream.Family;
+            }
+            else if (roll > 18 && roll <= 20)
+            {
+                dream = Dream.Love;
+            }
+            else if (roll > 20 && roll <= 22)
+            {
+                dream = Dream.Colours;
+            }
+            else if (roll > 22 && roll <= 24)
+            {
+                dream = Dream.Harmony;
+            }
+            else if (roll > 24 && roll <= 26)
+            {
+                dream = Dream.Riches;
+            }
+            else if (roll > 26 && roll <= 28)
+            {
+                dream = Dream.Flying;
+            }
+            else if (roll > 28 && roll <= 30)
+            {
+                dream = Dream.Home;
+            }
+            else if (roll > 30 && roll <= 32)
+            {
+                dream = Dream.Rest;
+            }
+            else if (roll > 32 && roll <= 34)
+            {
+                dream = Dream.Angels;
+            }
+            else if (roll > 34 && roll <= 36)
+            {
+                dream = Dream.Yourself;
+            }
+            else if (roll > 36 && roll <= 38)
+            {
+                dream = Dream.Defiance;
+            }
+            else if (roll > 38 && roll <= 40)
+            {
+                dream = Dream.Progeny;
+            }
+            else if(roll == 41)
+            {
+                dream = Dream.Fantasia;
+            }
+
+            int dc;
+            Int32.TryParse(dreamCount[ind - 1].Text, out dc);
+            if (dream.Stack != 0 && dc + 1 > dream.Stack)
+            {
+                roll = RollRandom(1, 41);
+                dreamRolled[ind - 1].Text = "" + roll;
+                dream = getDream(roll, ind);
+            }
+
+            return dream;
+        }
+
+        private Nightmare getNightmare(int roll, int ind)
+        {
+            Nightmare nightmare = new Nightmare();
+            if (roll <= 2)
+            {
+                nightmare = Nightmare.Secrets;
+            }
+            else if (roll > 2 && roll <= 4)
+            {
+                nightmare = Nightmare.Lost_Woods;
+            }
+            else if (roll > 4 && roll <= 6)
+            {
+                nightmare = Nightmare.Loss;
+            }
+            else if (roll > 6 && roll <= 8)
+            {
+                nightmare = Nightmare.Enemies;
+            }
+            else if (roll > 8 && roll <= 10)
+            {
+                nightmare = Nightmare.Shadows;
+            }
+            else if (roll > 10 && roll <= 12)
+            {
+                nightmare = Nightmare.Monsters;
+            }
+            else if (roll > 12 && roll <= 14)
+            {
+                nightmare = Nightmare.The_Dead;
+            }
+            else if (roll > 14 && roll <= 16)
+            {
+                nightmare = Nightmare.A_Witch;
+            }
+            else if (roll > 16 && roll <= 18)
+            {
+                nightmare = Nightmare.Abuse;
+            }
+            else if (roll > 18 && roll <= 20)
+            {
+                nightmare = Nightmare.Lunacy;
+            }
+            else if (roll > 20 && roll <= 22)
+            {
+                nightmare = Nightmare.Strangers;
+            }
+            else if (roll > 22 && roll <= 24)
+            {
+                nightmare = Nightmare.Discord;
+            }
+            else if (roll > 24 && roll <= 26)
+            {
+                nightmare = Nightmare.A_Fall;
+            }
+            else if (roll > 26 && roll <= 28)
+            {
+                nightmare = Nightmare.Shame;
+            }
+            else if (roll > 28 && roll <= 30)
+            {
+                nightmare = Nightmare.Demons;
+            }
+            else if (roll > 30 && roll <= 32)
+            {
+                nightmare = Nightmare.The_Unknown;
+            }
+            else if (roll > 32 && roll <= 34)
+            {
+                nightmare = Nightmare.Lack;
+            }
+            else if (roll > 34 && roll <= 36)
+            {
+                nightmare = Nightmare.Fatigue;
+            }
+            else if (roll > 36 && roll <= 38)
+            {
+                nightmare = Nightmare.Lust;
+            }
+            else if (roll > 38 && roll <= 40)
+            {
+                nightmare = Nightmare.Your_Bane;
+            }
+            else if (roll == 41)
+            {
+                nightmare = Nightmare.The_Abyss;
+            }
+
+            int dc;
+            Int32.TryParse(nightmareCount[ind - 1].Text, out dc);
+            if (nightmare.Stack != 0 && dc + 1 > nightmare.Stack)
+            {
+                roll = RollRandom(1, 41);
+                dreamRolled[ind - 1].Text = "" + roll;
+                nightmare = getNightmare(roll, ind);
+            }
+
+            return nightmare;
+        }
+
         private void fillCharacterStats()
         {
             textBox_Dreams.Text = "" + character.TotalDreams;
             textBox_Nightmares.Text = "" + character.TotalNightmares;
             textBox_Derangements.Text = "" + character.TotalDerangement;
+            if(character.Manifestation != null)
+            {
+                textBox_Adonis.Text = "" + character.Manifestation.AdonisChance;
+                textBox_Shadow.Text = "" + character.Manifestation.ShadowChance;
+            }  
         }
     }
 }

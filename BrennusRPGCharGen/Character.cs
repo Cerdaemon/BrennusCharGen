@@ -20,6 +20,9 @@ namespace BrennusRPGCharGen
 
         Manifestation manifestation;
         List<Power> powers = new List<Power>();
+
+        List<Dream> dreams = new List<Dream>();
+        List<Nightmare> nightmares = new List<Nightmare>();
        
 
         public Character() { }
@@ -29,7 +32,7 @@ namespace BrennusRPGCharGen
             //Dreams.Add(m.NumDreams);
             //Nightmares.Add(m.NumNightmares);
             //DerangementValues.Add(m.DvModifier);
-            manifestation = m;
+            Manifestation = m;
             recalculateCharacter();
         }
 
@@ -59,6 +62,22 @@ namespace BrennusRPGCharGen
             }        
         }
 
+        public void passAmountODreamsAndNightmares()
+        {
+            Dreams.Clear();
+            Nightmares.Clear();
+            for (int i = 0; i < TotalDreams; i++)
+            {
+                Dream d = new Dream();
+                Dreams.Add(d);
+            }
+            for (int i = 0; i < TotalNightmares; i++)
+            {               
+                Nightmare n = new Nightmare();                
+                Nightmares.Add(n);
+            }
+        }
+
         public void passTier(Tier t, int index)
         {
             Tier tier = t;
@@ -70,6 +89,20 @@ namespace BrennusRPGCharGen
         {
             Star star = s;
             Powers[index - 1].Star = star;
+            recalculateCharacter();
+        }
+
+        public void passDream(Dream d, int index)
+        {
+            Dream dream = d;
+            Dreams[index - 1] = dream;
+            recalculateCharacter();
+        }
+
+        public void passNightmare(Nightmare n, int index)
+        {
+            Nightmare nightmare = n;
+            Nightmares[index - 1] = nightmare;
             recalculateCharacter();
         }
 
@@ -101,13 +134,24 @@ namespace BrennusRPGCharGen
             TotalDerangement = 0;
             DvModifiers.Clear();
 
-            if (manifestation != null)
+            if (Manifestation != null)
             {
-                TotalDreams = manifestation.NumDreams;
-                TotalNightmares = manifestation.NumNightmares;
-                TotalDerangement = manifestation.DvModifier;
+                TotalDreams = Manifestation.NumDreams;
+                TotalNightmares = Manifestation.NumNightmares;
+                TotalDerangement = Manifestation.DvModifier;
             }
 
+            foreach(Dream d in Dreams)
+            {
+                TotalDerangement += d.DvModifier;
+                Console.WriteLine("Name: " + d.Name + " DV: " + d.DvModifier + " Total: " + TotalDerangement);
+            }
+
+            foreach (Nightmare n in Nightmares)
+            {
+                TotalDerangement += n.DvModifier;
+                Console.WriteLine("Name: " + n.Name + " DV: " + n.DvModifier + " Total: " + TotalDerangement);
+            }
 
             Tier strongest = new Tier();
             if (Powers.Count > 0)
@@ -240,6 +284,45 @@ namespace BrennusRPGCharGen
             set
             {
                 linkDVmods = value;
+            }
+        }
+
+        internal List<Dream> Dreams
+        {
+            get
+            {
+                return dreams;
+            }
+
+            set
+            {
+                dreams = value;
+            }
+        }
+
+        internal List<Nightmare> Nightmares
+        {
+            get
+            {
+                return nightmares;
+            }
+
+            set
+            {
+                nightmares = value;
+            }
+        }
+
+        internal Manifestation Manifestation
+        {
+            get
+            {
+                return manifestation;
+            }
+
+            set
+            {
+                manifestation = value;
             }
         }
     }

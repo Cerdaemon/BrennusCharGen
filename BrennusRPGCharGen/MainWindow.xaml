@@ -12,7 +12,7 @@
         <Label x:Name="label_Character" Content="Character Power and Strength" HorizontalAlignment="Left" Height="33" Margin="36,23,0,0" VerticalAlignment="Top" Width="198"/>
         <Border BorderBrush="#FF666666" BorderThickness="2" HorizontalAlignment="Left" Height="280" Margin="36,60,0,0" VerticalAlignment="Top" Width="386">
             <ScrollViewer x:Name="Scrollview_Link" HorizontalAlignment="Left" Height="280" Margin="0,0,2,0" VerticalAlignment="Top" Width="384" BorderThickness="0" Foreground="{x:Null}" BorderBrush="Black">
-                <Grid x:Name="grid_Link" HorizontalAlignment="Left" Height="223" Margin="0" VerticalAlignment="Top" Width="370" Background="#FFE4E4E4">
+                <Grid x:Name="grid_Link" HorizontalAlignment="Left" Height="40" Margin="0" VerticalAlignment="Top" Width="370" Background="#FFE4E4E4">
                     <Label x:Name="label_Link" Content="Links:" HorizontalAlignment="Left" Margin="10,10,0,0" Width="72" Height="30" VerticalAlignment="Top"/>
                     <TextBox x:Name="textBox_Link_Amount" Height="20" Margin="87,14,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="49" HorizontalAlignment="Left"/>
                     <Label x:Name="label_Link_Rolled" Content="Rolled:" HorizontalAlignment="Left" Height="30" Margin="141,10,0,0" VerticalAlignment="Top" Width="53"/>
@@ -53,6 +53,21 @@
         <TextBox x:Name="textBox_Nightmares" HorizontalAlignment="Left" Height="23" Margin="634,64,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="25"/>
         <Label x:Name="label_Derangement" Content="Derangement:" HorizontalAlignment="Left" Margin="664,60,0,0" VerticalAlignment="Top" Width="85"/>
         <TextBox x:Name="textBox_Derangements" HorizontalAlignment="Left" Height="23" Margin="754,64,0,0" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="40"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="276" Margin="454,125,0,0" VerticalAlignment="Top" Width="371">
+            <ScrollViewer>
+                <Grid x:Name="Grid_Dreams" Height="274" Width="349" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </ScrollViewer>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="276" Margin="454,422,0,0" VerticalAlignment="Top" Width="371">
+            <ScrollViewer>
+                <Grid x:Name="Grid_Nightmares" Height="274" Width="347" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </ScrollViewer>
+        </Border>
+        <Button x:Name="button_Roll_Dreams_and_Nightmares" Content="Roll Dreams/Nightmares" HorizontalAlignment="Left" Margin="816,64,0,0" VerticalAlignment="Top" Width="147" Height="23" Click="Roll_Dreams_Nightmares"/>
+        <Label x:Name="label" Content="Adonis Chance:" HorizontalAlignment="Left" Margin="454,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.842,0.5" Width="99"/>
+        <Label x:Name="label_Copy" Content="Shadow Chance:" HorizontalAlignment="Left" Margin="634,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.842,0.5" Width="99"/>
+        <TextBox x:Name="textBox_Adonis" HorizontalAlignment="Left" Height="23" Margin="558,95,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="52"/>
+        <TextBox x:Name="textBox_Shadow" HorizontalAlignment="Left" Height="23" Margin="742,95,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="52"/>
 
     </Grid>
 </Window>

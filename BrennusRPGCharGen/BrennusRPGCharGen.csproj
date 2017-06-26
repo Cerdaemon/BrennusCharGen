@@ -56,7 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
+    <Compile Include="Dream.cs" />
     <Compile Include="Manifestation.cs" />
+    <Compile Include="Nightmare.cs" />
     <Compile Include="Power.cs" />
     <Compile Include="Star.cs" />
     <Compile Include="Tier.cs" />
